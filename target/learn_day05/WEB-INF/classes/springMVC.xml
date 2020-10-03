@@ -13,5 +13,12 @@
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-    <mvc:annotation-driven/>
+    <bean id="conversionServiceFactoryBean" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.learn.utils.StringToDate"></bean>
+            </set>
+        </property>
+    </bean>
+    <mvc:annotation-driven conversion-service="conversionServiceFactoryBean"/>
 </beans>
